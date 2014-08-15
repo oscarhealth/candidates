@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>App</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+</head>
+<body>
+  <h1>Today's News</h1>
+  <div class="js-content"></div>
+  <script src='scripts/main.js'></script>
+  <script type="text/template" class="aritcle-template">
+    <div class="article-wrapper">
+      <h1><a href="<%= x.url %>"><%= x.title %></a></h1>
+      <h3><%= x.category %></h3>
+      <p><%= x.body %></p>
+      <ul class="more-related-articles">
+        <b>Top Articles in <%= x.category%>:</b>
+        <% for(var i = 0; i < x.topArticlesInCategory.length; i++) { %>
+          <li>
+          <a href="<%= x.topArticlesInCategory[i].url %>"><%= x.topArticlesInCategory[i].title %></a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </script>
+</body>
+</html>
+

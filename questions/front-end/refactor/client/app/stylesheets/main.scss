@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgrey;
+  margin: 0;
+}
+
+h1 {
+  background-color: grey;
+  box-shadow: 0 1px 8px black;
+  color: white;
+  font-family: courier;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+
+.container {
+  font-family: courier;
+  margin: 0.5em;
+}

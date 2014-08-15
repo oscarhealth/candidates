@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FE Interview</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <style type="text/css">
+    .doc-detail-list {
+      position: relative;
+      width: 480px;
+      list-style: none;
+    }
+
+    .doc-detail-list li {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      background-color: lightgrey;
+    }
+
+    .doc-detail-list .info {
+      position: relative;
+      padding: 1em;
+      width: 100%;
+    }
+
+    .button-wrapper {
+      background-color: #1abc9c;
+      color: white;
+      padding: 0.7em;
+      margin: 0.3em;
+      float: right;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+
+    .more-info {
+      display: none;
+      transition: opacity 1s, display 1s;
+      opacity: 0;
+      height: 0;
+    }
+
+    li.is-expanded .more-info {
+      opacity: 1;
+      display: block;
+      height: 100%;
+    }
+
+    .more-info dl {
+      margin: 1em;
+    }
+
+    .more-info dt {
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+<body>
+
+  <script type="text/javascript">
+    $('.doc-detail-list').find('.button').each(function() {
+      $(this).closest('.doc-detail-list').find('li').on('click', '.button-wrapper', function() {
+        $(this).find('li').toggleClass('is-expanded');
+        $target = e.target;
+        if($target.text().trim() == 'See More')
+          $(this).find('button').text('Hide Doctor Details');
+        else if ($target.text().trim() == 'Hide Doctor Details')
+          $(this).find('button').text('See More');
+      });
+    });
+  </script>
+
+  <h1>Doctor Hall of Fame</h1>
+
+  <div class="content">
+
+  <ul class="doc-detail-list">
+    <li class="doc-detail">
+      <div class="button-wrapper">
+        <div class="button">
+        See More
+        </div>
+      </div>
+      <div class="info">
+      Dr. Jones
+      </div>
+      <div class="more-info">
+        <dl>
+          <dt>Location:</dt>
+          <dd>University of Chicago</dd>
+          <dt>Specialties:</dt>
+          <dd>Archeology, Field Work</dd>
+          <dt>Contact:</dt>
+          <dd>jones@thelastcrusade.org</dd>
+        </dl>
+      </div>
+
+
+    </li>
+
+    <li class="doc-detail">
+      <div class="button-wrapper">
+        <div class="button">
+        See More
+        </div>
+      </div>
+      <div class="info">
+      House, M.D.
+      </div>
+      <div class="more-info">
+        <dl>
+          <dt>Location:</dt>
+          <dd>Princeton-Plainsboro Teaching Hospital</dd>
+          <dt>Specialties:</dt>
+          <dd>Diagnostic Medicine</dd>
+          <dt>Contact:</dt>
+          <dd><i>(deceased)</i></dd>
+        </dl>
+      </div>
+    </li>
+
+    <li class="doc-detail">
+      <div class="button-wrapper">
+        <div class="button">
+        See More
+        </div>
+      </div>
+      <div class="info">
+      Dr. McCoy
+      </div>
+      <div class="more-info">
+        <dl>
+          <dt>Location:</dt>
+          <dd>USS Enterprise</dd>
+          <dt>Specialties:</dt>
+          <dd>Transporter accident triage</dd>
+          <dt>Contact:</dt>
+          <dd>tbd</dd>
+        </dl>
+      </div>
+    </li>
+
+    <li class="doc-detail">
+      <div class="button-wrapper">
+        <div class="button">
+        See More
+        </div>
+      </div>
+      <div class="info">
+      Doctor Nick Riviera (usually referred to as Dr. Nick. . ."hi everybody!")
+      </div>
+      <div class="more-info">
+        <dl>
+          <dt>Location:</dt>
+          <dd>Hollywood Upstairs Medical College</dd>
+          <dt>Specialties:</dt>
+          <dd>Unnecessary Surgeries</dd>
+          <dt>Contact:</dt>
+          <dd>1-600-DOCTORB</dd>
+          <dt>quotes:</dt>
+          <dd>"You've tried the best, now try the rest!"</dd>
+          <dt>Awards:</dt>
+          <dd>"Top 25 Simpsons Peripheral Characters"</dd>
+        </dl>
+      </div>
+    </li>
+
+  </ul>
+
+  </div>
+</body>
+</html>

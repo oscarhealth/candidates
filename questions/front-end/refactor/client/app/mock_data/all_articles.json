@@ -1,0 +1,58 @@
+{
+  "articles": [
+    {
+      "contentId": "1",
+      "title": "world's best disease",
+      "body": "if you get this disease, good things happen...Bacon ipsum dolor sit amet doner capicola jowl, frankfurter bacon leberkas swine sausage venison spare ribs shoulder corned beef. Jerky sirloin bacon, filet mignon tongue salami capicola pig strip steak hamburger tri-tip. Pig sirloin chuck tenderloin, tongue kielbasa corned beef pancetta hamburger andouille pork loin. Ham venison meatloaf, jowl ribeye pork chop cow. T-bone turkey corned beef short ribs jerky pork belly pancetta pork loin tongue hamburger turducken filet mignon. Pork belly jerky salami shankle kevin cow beef ribs. Boudin corned beef bresaola prosciutto.",
+      "url": "/article/1",
+      "relatedArticles": [
+        {
+          "contentId": "2",
+          "title": "world's worst disease",
+          "body": "if you get this disease, not so good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+          "url": "/article/2"
+        },
+        {
+          "contentId": "3",
+          "title": "all about asthma",
+          "body": "if you get this disease, not so good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+          "url": "/article/3"
+        },
+        {
+          "contentId": "4",
+          "title": "colds: are they really that bad?",
+          "body": "if you get this disease, not so good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+          "url": "/article/4"
+        }
+      ]
+    },
+
+
+    {
+      "contentId": "2",
+      "title": "world's worst disease",
+      "body": "if you get this disease, not so good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+      "url": "/article/2",
+      "relatedArticles": [
+        {
+          "contentId": "1",
+          "title": "world's best disease",
+          "body": "if you get this disease, good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+          "url": "/article/1"
+        },
+        {
+          "contentId": "3",
+          "title": "all about asthma",
+          "body": "if you get this disease, not so good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+          "url": "/article/3"
+        },
+        {
+          "contentId": "4",
+          "title": "colds: are they really that bad?",
+          "body": "if you get this disease, not so good things happen...Tail short ribs pork belly jerky, turducken chicken doner cow. Andouille tenderloin ham short loin ribeye sausage. Short loin ribeye prosciutto capicola venison bacon short ribs jerky sirloin boudin pork chop beef ribs. Pork pork loin pastrami salami pork belly meatloaf t-bone jerky pig prosciutto turducken short ribs ribeye shankle chuck. Drumstick pork belly ribeye fatback. Pork loin andouille filet mignon shoulder, bresaola pork jerky flank sausage.",
+          "url": "/article/4"
+        }
+      ]
+    }
+  ]
+}

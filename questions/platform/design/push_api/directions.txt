@@ -1,0 +1,39 @@
+Setup:
+1) setup local database
+   mysql> create database push_service
+   sh> mysql -u root push_service < member.sql
+
+2) build and run the api server
+   sh> ./pants interview/platform/design/push_api:push_server
+   sh> dist/push_server.pex
+
+Task:
+
+1) Create a table in mysql that can store data according to the schema in
+clm_data.dat.
+
+2) Write a parser to parse/validate the data in test_data/clm_data.dat
+
+3) Store the parsed data in the mysql table create in step 1.
+
+4) Notify push server with claim updates. Send a json post to localhost:8888
+   containing two fields: installation_id and message. Message should be claim
+   status and amount.
+
+    The service will return a json object: {"ap_status_code": [1 | 2 | 3]}
+
+    1: The push notification was sent to the device
+    2: The device was not reachable
+    3: The user has disabled push notifications for our application
+
+    The push server will disable our account if it's sent too many messages to users who have disabled notifications
+
+5) The push server will also tell you if a user has enabled or disabled push notifications
+
+    /device_status
+
+    POST: {"installation_id": <int>}
+
+    returns: {"push_enabled": <true|false>}
+
+

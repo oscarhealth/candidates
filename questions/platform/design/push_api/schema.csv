@@ -1,0 +1,6 @@
+field_name,begin,end,type
+mem_id,0,6,string
+clm_id,7,11,string
+clm_dt,12,19,date
+clm_amt,20,27,currency
+clm_status,28,30,string
