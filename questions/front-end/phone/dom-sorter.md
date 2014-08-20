@@ -4,6 +4,8 @@
 
 Write a function which sorts all of the nodes on a page alphabetically by tag name. If a node has children, its children should be similarly sorted. So, if a node has 2 children, a div then an anchor, after sorting the order should be anchor then div.
 
+No return value, dom is expected to be mutated to reflect the sorted order.
+
 
     function nodeSorter($node) {
 
