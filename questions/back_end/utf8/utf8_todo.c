@@ -17,10 +17,38 @@ Bits of code point 	First code point 	Last code point     Byte 1 	 Byte 2   Byte
 */
 
 void reverse_string(char * str, int len) {
-
+    int first = 0;
+    int last = len -1;
+    while(first < last) {
+        char temp = str[first];
+        str[first] = str[last];
+        str[last] = temp;
+        ++first; --last;
+    }
 }
 
 void reverse_utf8_string(char* str, int len) {
+
+    for(int i = 0; i < len; ++i) {
+        char first = str[i];
+        if( !(first & 0x80) ) {
+            continue;
+        }
+
+        int countCheck = 6;
+        char testByte = 0xfc;
+
+        while(countCheck > 1) {
+            if((first & testByte) == testByte) break;
+            countCheck--;
+            testByte = testByte << 1;
+        }
+
+        reverse_string(str + i, countCheck);
+        i += countCheck;
+    }
+
+    reverse_string(str, len);
 
 }
 
