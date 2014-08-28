@@ -1,0 +1,1 @@
+# Glossary Design (for candidate)
