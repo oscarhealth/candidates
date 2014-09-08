@@ -17,7 +17,74 @@ No return value, dom is expected to be mutated to reflect the sorted order.
 # internal only
 
 ## Solution:
-(link to full solution)[http://codepen.io/Kalmakazi/pen/wzlnt/]
+
+### html
+
+    <body>
+      <article> <!-- This wrapper prevents infinite loops -->
+        <div>div</div>
+        <a>a</a>
+        <p>p</p>
+        <header>header</header>
+        <div>
+          <span>span</span>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+          <p>p</p>
+        </div>
+      </article>
+    </body>
+
+
+### CSS
+    * {
+      border: 1px solid black;
+      padding-left: 10px;
+      margin: 0;
+    }
+
+
+### js
+    function nodeSorter($node) {
+      $node = $node || $('article');
+      var children = $node.children();
+      var sortedObj = {};
+      var keys = [];
+
+      if (!children.length) {
+        return;
+      }
+
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i];
+        var childType = child.nodeName;
+        if (keys.indexOf(childType) === -1) {
+          keys.push(childType);
+          sortedObj[childType] = [child];
+        } else {
+          sortedObj[childType].push(child);
+        }
+        nodeSorter($(child));
+      }
+
+      keys = keys.sort();
+      var sortedEls = [];
+      for (var j = 0; j < keys.length; j++) {
+        sortedEls = sortedEls.concat(sortedObj[keys[j]]);
+      }
+
+      if (sortedEls.length) {
+        $node.empty().append(sortedEls);
+      }
+    }
+
+
+    nodeSorter();
+
+
 
 ## Gotchas:
 - Ignore text nodes if using jQuery (good candidates will ask)

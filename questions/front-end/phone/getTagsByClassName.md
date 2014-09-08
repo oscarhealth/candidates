@@ -15,7 +15,84 @@ Write a function which tags a string and returns all elements which have a class
 # internal only
 
 ## Solution:
-(link to full solution)[http://codepen.io/johnmanong/pen/FcAhb?editors=001]
+    <body class="test-class">
+      <div class="test"></div>
+      <span class="test-class">
+        <span class="test">
+          <span class="class">
+            <a href="" class="test-class"></a>
+          </span>
+        </span>
+      </span>
+      <script type="text/javascript">
+        // recursive solution
+        //
+        function getElementsByClassName(className) {
+          var foundTags = [];
+          var startNode = document.body;
+
+          getTags(startNode);
+
+          function hasClass(node) {
+              var nodeClasses = node.className.split(" ");
+              var isMatch = false;
+
+              [].forEach.call(nodeClasses, function(nodeClass) {
+                  if (nodeClass === className) {
+                    isMatch = true;
+                  }
+              });
+              return isMatch;
+          }
+
+          function getTags(node) {
+              if (hasClass(node)) {
+                foundTags.push(node);
+              }
+
+              var childrenNodes = node.children;
+
+              if (childrenNodes.length) {
+                [].forEach.call(childrenNodes, function(childNode) {
+                  getTags(childNode);
+                });
+              }
+          }
+
+          return foundTags;
+        }
+
+        console.log(getElementsByClassName('test-class'));
+
+
+        // Non recursive solution
+        //
+        function getElementsByClassNameNoRecursion(className) {
+          var matches = [];
+          var allNodes = document.getElementsByTagName('*');
+
+          [].forEach.call(allNodes, function(currentNode) {
+            var nodeClasses = currentNode.className.split(" ");
+
+            // since you cannot break a forEach loop, use every instead
+            [].every.call(nodeClasses, function(nodeClass) {
+                if (nodeClass === className) {
+                  matches.push(currentNode);
+                  return false;
+                }
+            });
+
+          });
+
+          return matches;
+        }
+
+        console.log(getElementsByClassNameNoRecursion('test-class'));
+
+      </script>
+    </body>
+
+
 
 ## Gotchas:
 - recursive solution:
