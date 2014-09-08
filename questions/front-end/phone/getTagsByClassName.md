@@ -15,7 +15,7 @@ Write a function which tags a string and returns all elements which have a class
 # internal only
 
 ## Solution:
-(link to full solution)[http://codepen.io/Kalmakazi/pen/wzlnt/]
+(link to full solution)[http://codepen.io/johnmanong/pen/FcAhb?editors=001]
 
 ## Gotchas:
 - recursive solution:
