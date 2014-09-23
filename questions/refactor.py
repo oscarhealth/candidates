@@ -2,7 +2,7 @@ import datetime
 import time
 
 
-class Thing:
+class Person:
 
     def __init__(self):
         self.name = ''
@@ -47,8 +47,8 @@ class Finder:
             for j in range(i + 1, len(self.p)):
                 r = F()
                 if time.mktime(self.p[i].birth_date.timetuple()) < time.mktime(self.p[j].birth_date.timetuple()):
-                    r.p1 = self.p[i]
-                    r.p2 = self.p[j]
+                    r.p1 = self.p[i]    # birthday who is less
+                    r.p2 = self.p[j]    # birthday who is greater
                 else:
                     r.p1 = self.p[j]
                     r.p2 = self.p[i]
@@ -60,9 +60,11 @@ class Finder:
 
         answer = tr[0]
         for result in tr:
+            # looking for a result difference greater than answer difference ... closest together in age
             if ft == FT.ONE:
                 if result.d < answer.d:
                     answer = result
+            # looking for a result difference less than answer difference... farthest apart in age
             elif ft == FT.TWO:
                 if result.d > answer.d:
                     answer = result

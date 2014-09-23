@@ -18,7 +18,9 @@ mike.birth_date = datetime.date(1979, 1, 1)
 
 a = [sue, sarah, mike, greg]
 f = Finder(a)
-assert f.find(FT.ONE).p1.name == 'Sue'
+
+# FT.ONE closest together / FT.TWO farthest apart
+assert f.find(FT.ONE).p1.name == 'Sue'  	# youngest persons name of closest together birthdays
 assert f.find(FT.ONE).p2.name == 'Greg'
 assert f.find(FT.TWO).p1.name == 'Sue'
 assert f.find(FT.TWO).p2.name == 'Sarah'
