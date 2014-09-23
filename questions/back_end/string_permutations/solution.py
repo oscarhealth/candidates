@@ -10,5 +10,3 @@ def permutations(string):
 
 perms = permutations("abc")
 print len(perms), perms  # prints: 6 ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
-
-
