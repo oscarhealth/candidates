@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FE Interview</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <style type="text/css">
     .doc-detail-list {
@@ -21,7 +21,13 @@
     .doc-detail-list .info {
       position: relative;
       padding: 1em;
+      padding-left: 2em;
       width: 100%;
+    }
+
+    .doc-detail-list .info span{
+      position: absolute;
+      left: 1em;
     }
 
     .button-wrapper {
@@ -85,7 +91,8 @@
         </div>
       </div>
       <div class="info">
-      Dr. Jones
+        <span>1.</span>
+        Dr. Jones
       </div>
       <div class="more-info">
         <dl>
@@ -108,7 +115,8 @@
         </div>
       </div>
       <div class="info">
-      House, M.D.
+        <span>2.</span>
+        House, M.D.
       </div>
       <div class="more-info">
         <dl>
@@ -129,7 +137,8 @@
         </div>
       </div>
       <div class="info">
-      Dr. McCoy
+        <span>3.</span>
+        Dr. McCoy
       </div>
       <div class="more-info">
         <dl>
@@ -150,6 +159,7 @@
         </div>
       </div>
       <div class="info">
+      <span>4.</span>
       Doctor Nick Riviera (usually referred to as Dr. Nick. . ."hi everybody!")
       </div>
       <div class="more-info">
