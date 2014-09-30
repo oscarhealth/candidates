@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FE Interview</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <style type="text/css">
     .doc-detail-list {
@@ -19,9 +19,7 @@
     }
 
     .doc-detail-list .info {
-      position: relative;
       padding: 1em;
-      width: 100%;
     }
 
     .button-wrapper {
@@ -61,6 +59,8 @@
 <body>
 
   <script type="text/javascript">
+   /*
+   $(function(){
     $('.doc-detail-list').find('.button').each(function() {
       $(this).closest('.doc-detail-list').find('li').on('click', '.button-wrapper', function() {
         $(this).find('li').toggleClass('is-expanded');
@@ -71,6 +71,30 @@
           $(this).find('button').text('See More');
       });
     });
+   })
+   */
+
+
+
+  $(function(){
+    $('.button').click(function(){
+      var $li = $(this).closest('li'),
+        $button = $(this),
+        expanded = $button.text().trim() !== 'See More';
+
+        $li.toggleClass('is-expanded');
+
+        if(!expanded) {
+          $button.text('Hide Doctor Details');
+        } else {
+          $button.text('See More');
+        }
+      
+    });
+  })
+
+  
+
   </script>
 
   <h1>Doctor Hall of Fame</h1>
