@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>FE Interview</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <style type="text/css">
     .doc-detail-list {
@@ -19,6 +18,7 @@
     }
 
     .doc-detail-list .info {
+      box-sizing: border-box;
       position: relative;
       padding: 1em;
       padding-left: 2em;
@@ -39,19 +39,22 @@
       top: 0;
       right: 0;
       cursor: pointer;
+      position: relative;
+      z-index: 1;
     }
 
     .more-info {
-      display: none;
-      transition: opacity 1s, display 1s;
+      -webkit-transition: opacity 1s, max-height 1s 1s; 
       opacity: 0;
-      height: 0;
+      max-height: 0;
+      padding: 0;
     }
 
     li.is-expanded .more-info {
+      -webkit-transition: opacity 1s 1s, max-height 1s; 
       opacity: 1;
       display: block;
-      height: 100%;
+      max-height: 60em;
     }
 
     .more-info dl {
@@ -65,19 +68,6 @@
 
 </head>
 <body>
-
-  <script type="text/javascript">
-    $('.doc-detail-list').find('.button').each(function() {
-      $(this).closest('.doc-detail-list').find('li').on('click', '.button-wrapper', function() {
-        $(this).find('li').toggleClass('is-expanded');
-        $target = e.target;
-        if($target.text().trim() == 'See More')
-          $(this).find('button').text('Hide Doctor Details');
-        else if ($target.text().trim() == 'Hide Doctor Details')
-          $(this).find('button').text('See More');
-      });
-    });
-  </script>
 
   <h1>Doctor Hall of Fame</h1>
 
@@ -181,5 +171,54 @@
   </ul>
 
   </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    (function($) {
+      var $detailList = $('.doc-detail-list');
+
+      $detailList.click(function(e) {
+        var $target =  $(e.target),
+            $parent =  $($target.parent()),
+            $closeLI = null,
+            hasExpanded;
+
+        if($target.hasClass('button-wrapper') || $parent.hasClass('button-wrapper')) {
+          $closeLI = $target.closest('li');
+
+          hasExpanded = $closeLI.hasClass('is-expanded');
+          $detailList.find('li').removeClass('is-expanded');
+          $detailList.find('.button').html('See More');
+
+          if(hasExpanded) {
+
+            if(!$target.hasClass('button')) {
+              $target = $target.find('.button');
+            }
+            $target.html('See More');
+          } else {
+
+            if($target.hasClass('button')) {
+              $target.html('Hide Doctor Details');
+            } else {
+              $target.find('.button').html('Hide Doctor Details');
+            }
+            $closeLI.addClass('is-expanded');
+          }
+        }
+      });
+
+      // $('.doc-detail-list').find('.button').each(function() {
+      //   $(this).closest('.doc-detail-list').find('li').on('click', '.button-wrapper', function() {
+      //     $(this).find('li').toggleClass('is-expanded');
+      //     $target = e.target;
+      //     if($target.text().trim() == 'See More')
+      //       $(this).find('button').text('Hide Doctor Details');
+      //     else if ($target.text().trim() == 'Hide Doctor Details')
+      //       $(this).find('button').text('See More');
+      //     });
+      //   });
+    })(jQuery);
+    </script>
 </body>
 </html>
