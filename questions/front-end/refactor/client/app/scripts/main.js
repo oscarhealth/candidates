@@ -36,6 +36,7 @@ $(function() {
   })
   .done(function(r) {
     console.log('done');
+    console.log(r)
     articles = eval(r);
 
     for(var i = 0; i < articles.length; ++i) {

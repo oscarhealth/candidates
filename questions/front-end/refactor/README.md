@@ -21,8 +21,9 @@ You are building the client portion of a news homepage with another engineer. Th
 (in `v1` or `v2`)
 
 1. `$ pip install loremipsum`
-2. `$ python testdata.py`
-3. `$ python refactor.py`  // localhost:5000/articles
+2. `$ pip install flask`
+3. `$ python testdata.py`
+4. `$ python refactor.py`  // localhost:5000/articles
 
 
 ## Approx. Timeline
