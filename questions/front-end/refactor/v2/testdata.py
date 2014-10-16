@@ -28,7 +28,10 @@ for i in range (0, 500):
 
   top_articles_in_category = top_articles_in_category_map[category]
   if len(top_articles_in_category) < 3:
-    top_articles_in_category.append(article['id'])
+    top_articles_in_category.append({
+      'id': article['id'],
+      'title': article['title']
+    })
 
 
   articles.append(article)
