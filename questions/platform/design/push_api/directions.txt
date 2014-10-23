@@ -1,39 +1,43 @@
+Background:
+
+Each member has installed our mobile application which assigns their member_id to an "installation_id".  This is a
+unique identifier for their specific mobile hardware.  We like to send messages to these installations to alert members
+about important events, e.g. a claim being processed
+
+This service is a simple service that receives claims from an external vendor, processes them, and save the results into
+the database.  We'd like to send notifications to our members phones about these events.
+
 Setup:
-1) setup local database
-   mysql> create database push_service
-   sh> mysql -u root push_service < member.sql
 
-2) build and run the api server
-   sh> ./pants interview/platform/design/push_api:push_server
-   sh> dist/push_server.pex
+Pushing a notification to a phone requires that we communicate with the Apple Push Notification Service (APNS).  The
+APNS conveniently handles the inner workings of sending these notifications.  Also conveniently, there is a locally
+running process which mimics the APNS.
 
-Task:
+Our server listens on port 8888 and has two available functions:
 
-1) Create a table in mysql that can store data according to the schema in
-clm_data.dat.
+1) send_push
 
-2) Write a parser to parse/validate the data in test_data/clm_data.dat
 
-3) Store the parsed data in the mysql table create in step 1.
+    POST to localhost:8888/send_push
+        - HTTP Header: Content-Type:application/json
+        - JSON : {"installation_id": <int>, "message": <string>}
 
-4) Notify push server with claim updates. Send a json post to localhost:8888
-   containing two fields: installation_id and message. Message should be claim
-   status and amount.
-
-    The service will return a json object: {"ap_status_code": [1 | 2 | 3]}
+    The service will return a json object: {"api_status_code": [1 | 2 | 3]}
 
     1: The push notification was sent to the device
     2: The device was not reachable
     3: The user has disabled push notifications for our application
 
-    The push server will disable our account if it's sent too many messages to users who have disabled notifications
+    Warning! The APNS will disable our account if we continually try to send notifications to unreachable devices or
+    devices that have explicitly disabled our application.
 
-5) The push server will also tell you if a user has enabled or disabled push notifications
+2) device_status
 
-    /device_status
-
-    POST: {"installation_id": <int>}
+    POST to localhost:8888/device_status
+        - HTTP Header: Content-Type:application/json
+        - JSON : {"installation_id": <int>}
 
     returns: {"push_enabled": <true|false>}
 
 
+run python data_loader.py to kickoff the process.  Assume that this process is running on a cron and runs every 5 min.

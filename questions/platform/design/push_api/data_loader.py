@@ -4,6 +4,35 @@ import MySQLdb
 from schema_generator import parse_schema, primary_keys
 
 
+# TODO: make this function work!
+def send_msg(mem_id, claim_id, date, amount, claim_status):
+    """
+    Send a push notification about a claim
+    """
+    print "Send a push to %s" % mem_id
+
+
+def get_device_ids():
+    """
+    Returns a dictionary of {mem_id: installation_id}
+    """
+    select_cmd = 'SELECT mem_id, installation_id FROM member_device'
+
+    conn = MySQLdb.connect(
+        host="localhost",  # your host, usually localhost
+        user="root",  # your username
+        db="push_service")  # name of the data base
+
+    cur = conn.cursor()
+    cur.execute(select_cmd)
+
+    results = {}
+    for row in cur.fetchall():
+        results[row[0]] = int(row[1])
+
+    return results
+
+
 def insert_statement_for_line(columns, primary_key_list, line):
 
     values = []
@@ -30,6 +59,8 @@ def insert_statement_for_line(columns, primary_key_list, line):
 
     insert_statement = 'INSERT INTO claims ({all_columns}) VALUES ({col_values}) ON DUPLICATE KEY UPDATE {col_updates};'
 
+    send_msg(*values)
+
     return insert_statement.format(
         all_columns=','.join(all_columns),
         col_values=','.join("'%s'" % val for val in values),
@@ -52,7 +83,7 @@ def load(columns, primary_key_list, filename):
     with open(filename) as data_file:
         for line in data_file.readlines():
             statement = insert_statement_for_line(columns, primary_key_list, line)
-            print statement
+            # print statement
             cur.execute(statement)
     conn.commit()
 

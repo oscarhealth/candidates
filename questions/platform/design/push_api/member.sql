@@ -1,10 +1,10 @@
-create table members (
-  id varchar(8),
-  installation_id int,
-  primary key(id));
+create table member_device
+(
+	mem_id varchar(7) not null,
+  installation_id int not null
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into members (id,installation_id) values
-  ('R987654',1),
-  ('R987655',2),
-  ('R987656',3),
-  ('R987657',4);
+insert into member_device (mem_id, installation_id) VALUES('R987654', 1);
+insert into member_device (mem_id, installation_id) VALUES('R987655', 2);
+insert into member_device (mem_id, installation_id) VALUES('R987656', 3);
+insert into member_device (mem_id, installation_id) VALUES('R987657', 4);
