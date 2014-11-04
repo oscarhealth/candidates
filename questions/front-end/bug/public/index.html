@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FE Interview</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <style type="text/css">
     .doc-detail-list {
@@ -39,6 +39,8 @@
       top: 0;
       right: 0;
       cursor: pointer;
+      position: relative;
+      z-index: 1;
     }
 
     .more-info {
@@ -66,18 +68,7 @@
 </head>
 <body>
 
-  <script type="text/javascript">
-    $('.doc-detail-list').find('.button').each(function() {
-      $(this).closest('.doc-detail-list').find('li').on('click', '.button-wrapper', function() {
-        $(this).find('li').toggleClass('is-expanded');
-        $target = e.target;
-        if($target.text().trim() == 'See More')
-          $(this).find('button').text('Hide Doctor Details');
-        else if ($target.text().trim() == 'Hide Doctor Details')
-          $(this).find('button').text('See More');
-      });
-    });
-  </script>
+  
 
   <h1>Doctor Hall of Fame</h1>
 
@@ -181,5 +172,26 @@
   </ul>
 
   </div>
+
+  <script type="text/javascript">
+    
+    $(function(){
+
+      $('.doc-detail-list').on('click', '.button', function(e) {
+        
+        
+          
+        $(this).parents('li.doc-detail').toggleClass('is-expanded');
+          
+        if ( $.trim( $(this).text() ) === 'See More') {
+          $(this).text('Hide Doctor Details');
+        } else if ( $.trim( $(this).text() ) === 'Hide Doctor Details') {
+          $(this).text('See More');
+        }
+          
+      });
+    })
+    
+  </script>
 </body>
 </html>

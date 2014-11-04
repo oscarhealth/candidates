@@ -12,7 +12,7 @@ function Article() {
   this.body = '';
   this.title = '';
   this.category = '';
-  this.topArticlesInCategory = [];
+  this.topArticlesInCategory;
 
   this.render = function() {
     return _.template($('.aritcle-template').html())(this)
@@ -23,31 +23,35 @@ _.templateSettings.variable = "x";
 
 Article.prototype = Object.create(Content.prototype);
 Article.prototype.constructor = Article;
-page_articles = [];
 
 $(function() {
   // get all articles
-  URL = 'http://localhost:5000/articles';
+  var page_articles = [],
+    URL = 'http://localhost:5000/articles';
 
   var test = $.ajax({
     url: URL,
     method: 'get',
-    dataType: 'text'
+    dataType: 'json'
   })
   .done(function(r) {
     console.log('done');
-    console.log(r)
-    articles = eval(r);
+    console.log(r);
+    // articles = eval(r);
+    var articles = r.articles,
+      topArticlesInCategory = r.topArticlesInCategory,
+      len = articles.length;
 
-    for(var i = 0; i < articles.length; ++i) {
-      var tempArticle = new Article(articles[i]);
+    for(var i = 0; i < len; ++i) {
+      var tempArticle = new Article();
+      var article = articles[i];
 
-      tempArticle.content_id = articles[i].id;
-      tempArticle.title = articles[i].title;
-      tempArticle.body = articles[i].body;
-      tempArticle.category = articles[i].category;
-      tempArticle.topArticlesInCategory = articles[i].top_articles_in_category;
-      tempArticle.url = '/article/' + articles[i].id;
+      tempArticle.content_id = article.id;
+      tempArticle.title = article.title ? article.title : 'Default Title';
+      tempArticle.body = article.body;
+      tempArticle.category = article.category;
+      tempArticle.topArticlesInCategory = topArticlesInCategory[article.category];
+      tempArticle.url = '/article/' + article.id;
 
       // console.log(tempArticle)
 
@@ -56,11 +60,15 @@ $(function() {
 
       $('.js-content').html('');
 
+      var template = '';
+
     for(var i = 0; i < page_articles.length; i++) {
       if(page_articles[i].title && page_articles[i].body && page_articles[i].url) {
-        $('.js-content').append(page_articles[i].render());
+        template += page_articles[i].render();
       }
     }
+
+    $('.js-content').append(template);
   })
 })
 
