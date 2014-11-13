@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FE Interview</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <style type="text/css">
     .doc-detail-list {
@@ -39,11 +39,13 @@
       top: 0;
       right: 0;
       cursor: pointer;
+      position: relative;
+      z-index: 99;
     }
 
     .more-info {
       display: none;
-      transition: opacity 1s, display 1s;
+      transition: opacity 1s, display 2s height 2s;
       opacity: 0;
       height: 0;
     }
@@ -66,18 +68,6 @@
 </head>
 <body>
 
-  <script type="text/javascript">
-    $('.doc-detail-list').find('.button').each(function() {
-      $(this).closest('.doc-detail-list').find('li').on('click', '.button-wrapper', function() {
-        $(this).find('li').toggleClass('is-expanded');
-        $target = e.target;
-        if($target.text().trim() == 'See More')
-          $(this).find('button').text('Hide Doctor Details');
-        else if ($target.text().trim() == 'Hide Doctor Details')
-          $(this).find('button').text('See More');
-      });
-    });
-  </script>
 
   <h1>Doctor Hall of Fame</h1>
 
@@ -181,5 +171,27 @@
   </ul>
 
   </div>
+
+
+  <script type="text/javascript">
+    $('.doc-detail-list li.doc-detail .button-wrapper  .button').each(function(){
+        $(this).click(function(){
+            var $this = $(this),
+              li = $(this).parents('.doc-detail');
+              
+
+
+                li.toggleClass('is-expanded');
+
+                if($this.html().match(/see more/gi)) {
+                  $this.html('Hide Doctor Details');  
+                } else {
+                  $this.html('See More'); 
+                }
+            
+
+        }); 
+    })
+  </script>
 </body>
 </html>
