@@ -36,5 +36,13 @@
       assert.isString(templateResult);
       assert.equal(templateResult, "<h1>Hello World</h1><p>Content</p><p>Content</p>");
     });
+
+    test('can handle arbitrary whitespace between escape tags', function() {
+      var multiTemplate = oscarTemplate("<h1><%=title%></h1><p><%=         content%></p><p><%=      content      %></p>");
+      var templateResult = multiTemplate({ title: 'Hello World', content: 'Content' });
+
+      assert.isString(templateResult);
+      assert.equal(templateResult, "<h1>Hello World</h1><p>Content</p><p>Content</p>");
+    });
   });
 })();
