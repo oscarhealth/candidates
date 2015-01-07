@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+
+
+    <style>
+    body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div id="mocha"></div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/chai/1.10.0/chai.js"></script>
+    <script src="template.js"></script>
+
+    <script>
+    mocha.checkLeaks();
+    mocha.setup('tdd');
+    </script>
+    <script src="tests.js"></script>
+    <script>
+    mocha.run();
+    </script>
+
+</body>
+</html>
