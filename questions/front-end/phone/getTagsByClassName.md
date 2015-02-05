@@ -3,8 +3,8 @@
 ##Prompt (for candidate):
 
 Write a function which tags a string and returns all elements which have a class which matches the string.
-
-
+    // className is a string and is the class we want to target
+    // should return list of all elements which have class which matches className
     function getElementsByClassName(className) {
 
     }
