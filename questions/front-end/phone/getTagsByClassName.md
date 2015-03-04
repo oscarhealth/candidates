@@ -29,38 +29,26 @@ Write a function which tags a string and returns all elements which have a class
         // recursive solution
         //
         function getElementsByClassName(className) {
-          var foundTags = [];
-          var startNode = document.body;
-
-          getTags(startNode);
-
-          function hasClass(node) {
-              var nodeClasses = node.className.split(" ");
-              var isMatch = false;
-
-              [].forEach.call(nodeClasses, function(nodeClass) {
-                  if (nodeClass === className) {
-                    isMatch = true;
-                  }
-              });
-              return isMatch;
-          }
-
-          function getTags(node) {
-              if (hasClass(node)) {
-                foundTags.push(node);
-              }
-
-              var childrenNodes = node.children;
-
-              if (childrenNodes.length) {
-                [].forEach.call(childrenNodes, function(childNode) {
-                  getTags(childNode);
+            var foundTags = [];
+           
+            function hasClass(node) {
+                var nodeClasses = node.className.split(" ");        
+                return nodeClasses.indexOf(className) != -1
+            }
+            
+            function getTags(node) {
+                if (hasClass(node)) {
+                    foundTags.push(node);
+                }
+               
+                [].forEach.call(node.children, function(childNode) {
+                    getTags(childNode);
                 });
-              }
-          }
-
-          return foundTags;
+            }
+        
+            getTags(document.body);
+            
+            return foundTags;
         }
 
         console.log(getElementsByClassName('test-class'));
