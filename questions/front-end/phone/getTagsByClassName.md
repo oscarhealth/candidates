@@ -33,7 +33,7 @@ Write a function which tags a string and returns all elements which have a class
            
             function hasClass(node) {
                 var nodeClasses = node.className.split(" ");        
-                return nodeClasses.indexOf(className) != -1
+                return nodeClasses.indexOf(className) !== -1
             }
             
             function getTags(node) {
