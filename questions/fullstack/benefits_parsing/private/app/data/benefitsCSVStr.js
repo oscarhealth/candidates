@@ -1,0 +1,3 @@
+var benefitsCSVStr = "ID,BENEFIT_NAME,SERVICES,LOCATIONS,FEES,COST\nbenefit-1,Vaccinations,Flu Shot,Hospital,Physician,$10\nbenefit-1,Vaccinations,Flu Shot,Hospital,Facility,$20\nbenefit-1,Vaccinations,Flu Shot,Drug Store,,$30\nbenefit-1,Vaccinations,MMR,,,$40\nbenefit-1,Vaccinations,Other,,Physician,$50\nbenefit-1,Vaccinations,Other,,Facility,$60\nbenefit-2,Ambulance Services,,,,$100"
+
+module.exports = benefitsCSVStr;

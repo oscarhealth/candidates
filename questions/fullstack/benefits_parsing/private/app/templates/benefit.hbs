@@ -1,0 +1,61 @@
+<h1 class="benefit-title">{{ title }}</h1>
+<div class="benefit-info">
+  <ul class="benefit-services">
+    {{#each services}}
+      <li class="benefit-service">
+
+        {{!-- info for service itself --}}
+        <div class="benefit-service__info">
+          <span class="benefit-service__name">
+            {{ name }}
+          </span>
+          <span class="benefit-service__cost">
+            {{#each getCostDetails}}
+              {{!-- should only have one --}}
+              {{ cost }}
+            {{/each}}
+          </span>
+        </div>
+
+        {{!-- attempt to unpack locations --}}
+        {{#if getLocationDetails}}
+          <div class="benefit-service__locations">
+            Locations:
+            {{#each getLocationDetails}}
+              <div class="benefit-service__location">
+                <span class="benefit-service__location__name">
+                  {{ locationName }}
+                  {{#if feeName}}
+                    - {{ feeName }}
+                  {{/if}}
+                </span>
+                <span class="benefit-service__location__cost">
+                  {{ cost }}
+                </span>
+
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+
+        {{!-- attempt to unpack fees --}}
+        {{#if getFeeDetails}}
+          <div class="benefit-service__fees">
+            Fees:
+            {{#each getFeeDetails}}
+              <div class="benefit-service__fee">
+                <span class="benefit-service__fee__name">
+                  {{ feeName }}
+                </span>
+                <span class="benefit-service__fee__cost">
+                  {{ cost }}
+                </span>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+
+</div>

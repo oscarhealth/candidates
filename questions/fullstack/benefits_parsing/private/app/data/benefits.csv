@@ -1,0 +1,8 @@
+ID,BENEFIT_NAME,SERVICES,LOCATIONS,FEES,COST
+benefit-1,Vaccinations,Flu Shot,Hospital,Physician,$10
+benefit-1,Vaccinations,Flu Shot,Hospital,Facility,$20
+benefit-1,Vaccinations,Flu Shot,Drug Store,,$30
+benefit-1,Vaccinations,MMR,,,$40
+benefit-1,Vaccinations,Other,,Physician,$50
+benefit-1,Vaccinations,Other,,Facility,$60
+benefit-2,Ambulance Services,,,,$100
