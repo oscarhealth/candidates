@@ -1,18 +1,22 @@
 # Summary
 The goal of this project is to build a page to display benefit information. Benefits infomation data is stored in `app/data/benefits.csv`.
 
+# Business rules
+- All benefits contain one or more service
+    - if a service name is missing, assume it is the same as the benefit name
+- Benefit services can contain:
+    - zero or more location
+    - zero or more fees
+- Benefit service locations can contain:
+    - zero or more fees
+- costs can be assigned to a service, location or fee
+
+---
+
 # Getting Started
 This project is setup to use Grunt, Sass, Handlebars, and CommonJS modules.
 
 The default `grunt` task will start `http://localhost:8000` with live reload.
-
-
-
-
-
-
-
----
 
 # Trouble shooting
 ## Node
