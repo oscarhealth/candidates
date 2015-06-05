@@ -20,6 +20,8 @@ Write a function which tags a string and returns all elements which have a class
 - dom api
   - `node.children` returns an HTMLCollection, not an array
     - [].concat(node.children) returns [HTMLCollection], not a flat array
+- js
+  - `for in` for iterating children is not going to do what you think
 - recursive solution:
   - if you start at the body, be sure to check that node
   - `document.getElementsByTagName('*')` is hella fast
