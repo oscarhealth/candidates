@@ -1,21 +1,21 @@
 /// class stuff
 
 function Content() {
-  this.content_id = undefined;
-  this.url = ''
+  this.content_id = null;
+  this.url = '';
 }
 
 
-function Article() {
+function Article(article) {
   Content.call(this);
 
-  this.body = '';
+  this.body = article.body;
   this.title = '';
   this.category = '';
   this.topArticlesInCategory = [];
 
   this.render = function() {
-    return _.template($('.aritcle-template').html())(this)
+    return _.template($('.article-template').html())(this);
   }
 }
 
@@ -23,7 +23,6 @@ _.templateSettings.variable = "x";
 
 Article.prototype = Object.create(Content.prototype);
 Article.prototype.constructor = Article;
-page_articles = [];
 
 $(function() {
   // get all articles
@@ -32,28 +31,23 @@ $(function() {
   var test = $.ajax({
     url: URL,
     method: 'get',
-    dataType: 'text'
+    dataType: 'json'
   })
   .done(function(r) {
-    console.log('done');
-    articles = eval(r);
+    articles = r;
 
-    for(var i = 0; i < articles.length; ++i) {
-      var tempArticle = new Article(articles[i]);
+    var page_articles = articles.map(function(article) {
+      var tempArticle = new Article(article);
 
-      tempArticle.content_id = articles[i].id;
-      tempArticle.title = articles[i].title;
-      tempArticle.body = articles[i].body;
-      tempArticle.category = articles[i].category;
-      tempArticle.topArticlesInCategory = articles[i].top_articles_in_category;
-      tempArticle.url = '/article/' + articles[i].id;
+      tempArticle.content_id = article.id;
+      tempArticle.title = article.title;
+      tempArticle.category = article.category;
+      tempArticle.topArticlesInCategory = article.top_articles_in_category;
+      tempArticle.url = '/article/' + article.id;
+      return tempArticle;
+    });
 
-      // console.log(tempArticle)
-
-      page_articles.push(tempArticle);
-    }
-
-      $('.js-content').html('');
+    $('.js-content').empty();
 
     for(var i = 0; i < page_articles.length; i++) {
       if(page_articles[i].title && page_articles[i].body && page_articles[i].url) {
