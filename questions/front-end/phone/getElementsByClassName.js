@@ -28,6 +28,10 @@ var document = {
             {
               className: 'myclass thisclass',
               children: []
+            },
+            {
+              className: 'myclassthisisnot thisclass',
+              children: []
             }
           ]
         }
@@ -67,7 +71,7 @@ var document = {
           ]
         },
         {
-          className: 'thisclass thatclass',
+          className: 'myclasssthisnot thisclass thatclass',
           children: []
         }
       ]
