@@ -10,7 +10,7 @@ def oscar_template(template_string):
     passed-in object. For example::
 
         template_fn = oscar_template("hello <%= world %>")
-        ret = template_fn({ 'world': 'oscar' });
+        ret = template_fn({ 'world': 'oscar' })
 
     The variable "ret" would contain the string "hello oscar".
 
